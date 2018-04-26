@@ -112,13 +112,31 @@ public class GUIKontroler {
 	}
 
 	public static String izvrsiZamenu(Valuta valuta, boolean prodaja, double iznos) {
-			double konacniIznos = men.izvrsiTransakciju(valuta, prodaja, iznos);
-			return "" + konacniIznos;
+		double konacniIznos = men.izvrsiTransakciju(valuta, prodaja, iznos);
+		return "" + konacniIznos;
 	}
-	
+
 	public static void obrisiKurs(Valuta valuta) throws Exception {
 		men.obrisiValutu(valuta);
 		prikaziSveValute();
+	}
+
+	public static void unesiKurs(String naziv, String skraceniNaziv, int sifra, double prodajni, double kupovni,
+			double srednji) throws Exception{
+
+			Valuta valuta = new Valuta();
+
+			// Punjenje podataka o valuti
+			valuta.setNaziv(naziv);
+			valuta.setSkraceniNaziv(skraceniNaziv);
+			valuta.setSifra(sifra);
+			valuta.setProdajni(prodajni);
+			valuta.setKupovni(kupovni);
+			valuta.setSrednji(srednji);
+
+			// Dodavanje valute u kursnu listu
+			men.dodajValutu(valuta);
+
 	}
 
 }
