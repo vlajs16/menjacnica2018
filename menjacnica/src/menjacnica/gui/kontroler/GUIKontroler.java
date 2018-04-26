@@ -87,7 +87,7 @@ public class GUIKontroler {
 	}
 
 	public static void prikaziDodajKursGUI() {
-		DodajKursGUI prozor = new DodajKursGUI(mg);
+		DodajKursGUI prozor = new DodajKursGUI();
 		prozor.setLocationRelativeTo(mg.getContentPane());
 		prozor.setVisible(true);
 	}
