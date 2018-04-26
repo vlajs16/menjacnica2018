@@ -96,7 +96,7 @@ public class GUIKontroler {
 
 		if (mg.getTable().getSelectedRow() != -1) {
 			MenjacnicaTableModel model = (MenjacnicaTableModel) (mg.getTable().getModel());
-			ObrisiKursGUI prozor = new ObrisiKursGUI(mg, model.vratiValutu(mg.getTable().getSelectedRow()));
+			ObrisiKursGUI prozor = new ObrisiKursGUI(model.vratiValutu(mg.getTable().getSelectedRow()));
 			prozor.setLocationRelativeTo(mg.getContentPane());
 			prozor.setVisible(true);
 		}
@@ -114,6 +114,11 @@ public class GUIKontroler {
 	public static String izvrsiZamenu(Valuta valuta, boolean prodaja, double iznos) {
 			double konacniIznos = men.izvrsiTransakciju(valuta, prodaja, iznos);
 			return "" + konacniIznos;
+	}
+	
+	public static void obrisiKurs(Valuta valuta) throws Exception {
+		men.obrisiValutu(valuta);
+		prikaziSveValute();
 	}
 
 }

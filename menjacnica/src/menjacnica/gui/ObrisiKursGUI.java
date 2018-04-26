@@ -25,6 +25,10 @@ import java.awt.Toolkit;
 
 public class ObrisiKursGUI extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3908749570666279708L;
 	private JPanel contentPane;
 	private JLabel lblSifra;
 	private JLabel lblNaziv;
@@ -43,13 +47,12 @@ public class ObrisiKursGUI extends JFrame {
 	private JCheckBox chckbxZaistaObrisiKurs;
 	private JLabel label;
 	
-	private MenjacnicaGUI glavniProzor;
 	private Valuta valuta;
 
 	/**
 	 * Create the frame.
 	 */
-	public ObrisiKursGUI(MenjacnicaGUI glavniProzor, Valuta valuta) {
+	public ObrisiKursGUI(Valuta valuta) {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(ObrisiKursGUI.class.getResource("/icons/Screenshot.png")));
 		setResizable(false);
 		setTitle("Obrisi kurs");
@@ -77,7 +80,6 @@ public class ObrisiKursGUI extends JFrame {
 		contentPane.add(getBtnOdus());
 		
 		//podesavanje
-		this.glavniProzor = glavniProzor;
 		this.valuta = valuta;
 		
 		prikaziValutu();
@@ -229,9 +231,7 @@ public class ObrisiKursGUI extends JFrame {
 
 	private void obrisiValutu() {
 		try{
-			GUIKontroler.men.obrisiValutu(valuta);
-			
-			GUIKontroler.prikaziSveValute();
+			GUIKontroler.obrisiKurs(valuta);
 			dispose();
 		} catch (Exception e1) {
 			JOptionPane.showMessageDialog(contentPane, e1.getMessage(),
